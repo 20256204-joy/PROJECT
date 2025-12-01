@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.W.A Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+    <style>
+        .album-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .album {
+            width: 200px;
+            height: auto;
+            background-color: #1f1f2e;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .album:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+        }
+
+        .album h3 {
+            font-size: 1rem;
+            color: #dcdcff;
+            margin-bottom: 5px;
+        }
+
+        .album p a {
+            color: #8b82ff;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .album p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="N.W.A Logo">
+        <h1>Music Universe: N.W.A</h1>
+    </div>
+  <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/N.W.A Group Photo.png" alt="N.W.A Group Photo" class="hero-img">
+    <h2>N.W.A</h2>
+    <p>Pioneers of gangsta rap and West Coast hip hop, known for their bold lyrics and cultural impact.</p>
+</section>
+
+<section class="genre" id="events">
+    <h2>Tours & Events</h2>
+    <div class="timeline-container">
+        <div class="timeline-item"><h4>1988–1989</h4><p>Straight Outta Compton Tour</p></div>
+        <div class="timeline-item"><h4>1991–1992</h4><p>Niggaz4Life Tour</p></div>
+        <div class="timeline-item"><h4>1993</h4><p>Final Performances before breakup</p></div>
+        <div class="timeline-item"><h4>2016</h4><p>Reunion Performance at Coachella (Dr. Dre & MC Ren)</p></div>
+        <div class="timeline-item"><h4>Ongoing</h4><p>Legacy Tributes and Documentaries</p></div>
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Social Links</h2>
+    <ul>
+        <li><a href="https://www.facebook.com/DrDre" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/drdre" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/drdre" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@DrDre" target="_blank">YouTube</a></li>
+        <li><a href="https://open.spotify.com/artist/0pdew7B5vR3t8h9kzW4Jm9" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. N.W.A Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

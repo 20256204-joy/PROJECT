@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queen Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Logo">
+        <h1>Music Universe: Queen</h1>
+    </div>
+<nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/Queen Group Photo.png" alt="Queen Group Photo" class="hero-img">
+    <h2>Queen</h2>
+    <p>Legendary rock band known for their theatrical performances and timeless hits.</p>
+</section>
+
+<section class="genre" id="members">
+    <h2>Band Members</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/Freddie Mercury.png" alt="Freddie Mercury">
+            <h3>Freddie Mercury</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Vocals, Piano</strong></p>
+                <p>Birth: Sep 5, 1946 – Death: Nov 24, 1991</p>
+                <p>Iconic frontman, songwriter, and performer. Hits include "Bohemian Rhapsody" and "We Are the Champions".</p>
+                <p><a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Brian May.png" alt="Brian May">
+            <h3>Brian May</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Guitar, Vocals</strong></p>
+                <p>Birth: Jul 19, 1947</p>
+                <p>Lead guitarist and songwriter, known for his distinctive guitar tone and hits like "We Will Rock You".</p>
+                <p><a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Roger Taylor.png" alt="Roger Taylor">
+            <h3>Roger Taylor</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Drums, Vocals</strong></p>
+                <p>Birth: Jul 26, 1949</p>
+                <p>Drummer, songwriter, and singer. Known for his powerful vocals and hits like "Radio Ga Ga".</p>
+                <p><a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/John Deacon.png" alt="John Deacon">
+            <h3>John Deacon</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Bass Guitar</strong></p>
+                <p>Birth: Aug 19, 1951</p>
+                <p>Bassist and songwriter, contributed to hits like "Another One Bites the Dust" and "I Want to Break Free".</p>
+                <p><a href="https://www.youtube.com/watch?v=fJ9rUzIMcZQ" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe — Queen Fan Page</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

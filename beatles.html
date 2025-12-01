@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Logo">
+        <h1>The Beatles Universe</h1>
+    </div>
+<nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/b1.webp" class="hero-img">
+    <h2>The Beatles</h2>
+    <p>Legendary band that changed music forever.</p>
+</section>
+
+<section class="genre" id="members">
+    <h2>Band Members</h2>
+
+    <p style="margin-bottom: 30px;">
+        The Beatles were a legendary English rock band formed in Liverpool in 1960. 
+        Comprising John Lennon, Paul McCartney, George Harrison, and Ringo Starr, 
+        they revolutionized music with their innovative songwriting, harmonies, 
+        and style, becoming one of the most influential bands in history.
+    </p>
+
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/John Lennon.jfif" alt="John Lennon">
+            <h3>John Lennon</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Vocals, Rhythm Guitar</strong></p>
+                <p>Birth: Oct 9, 1940 – Death: Dec 8, 1980</p>
+                <p>Co-founder of the band, iconic songwriter and activist. Known for hits like "Imagine" and "Strawberry Fields Forever".</p>
+                <p><a href="https://www.youtube.com/watch?v=YkgkThdzX-8" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Paul McCartney.png" alt="Paul McCartney">
+            <h3>Paul McCartney</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Bass Guitar, Vocals</strong></p>
+                <p>Birth: Jun 18, 1942</p>
+                <p>Known for melodic bass lines, songwriting with Lennon, and hits like "Hey Jude" and "Let It Be".</p>
+                <p><a href="https://www.youtube.com/watch?v=45cYwDMibGo" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/George Harrison.png" alt="George Harrison">
+            <h3>George Harrison</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Lead Guitar, Vocals</strong></p>
+                <p>Birth: Feb 25, 1943 – Death: Nov 29, 2001</p>
+                <p>Brought Indian music influences, composed hits like "Something" and "Here Comes the Sun".</p>
+                <p><a href="https://www.youtube.com/watch?v=UelDrZ1aFeY" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Ringo Starr.png" alt="Ringo Starr">
+            <h3>Ringo Starr</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Drums, Vocals</strong></p>
+                <p>Birth: Jul 7, 1940</p>
+                <p>Known for steady drumming style, iconic fills, and charming personality.</p>
+                <p><a href="https://www.youtube.com/watch?v=ynxYNlY3w0s" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe — Beatles Fan Page</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

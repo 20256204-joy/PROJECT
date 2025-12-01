@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANY Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+    <style>
+        .album-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .album {
+            width: 200px;
+            height: auto;
+            background-color: #1f1f2e;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .album:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+        }
+
+        .album h3 {
+            font-size: 1rem;
+            color: #dcdcff;
+            margin-bottom: 5px;
+        }
+
+        .album p a {
+            color: #8b82ff;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .album p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="LANY Logo">
+        <h1>Music Universe: LANY</h1>
+    </div>
+<nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/lany-group.jpg" alt="LANY Group Photo" class="hero-img">
+    <h2>LANY</h2>
+    <p>American indie-pop band known for dreamy synth-pop sound and heartfelt lyrics.</p>
+</section>
+
+<main>
+
+<section class="genre" id="members">
+    <h2>Band Members</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/LANY Paul Jason Klein.png" alt="Paul Jason Klein">
+            <h3>Paul Jason Klein</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Lead Vocals, Guitar, Keyboard</strong></p>
+                <p>Founder and lead singer known for his heartfelt lyrics and emotive vocals.</p>
+                <p><a href="https://www.youtube.com/watch?v=1H7C8BAY2s8" target="_blank">Malibu Nights Live</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/LANY Jake Pearson.png" alt="Jake Pearson">
+            <h3>Jake Pearson</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Guitar, Vocals</strong></p>
+                <p>Contributes to the band’s lush guitar layers and harmonies.</p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/leslie-prince.jpg" alt="Les Priest">
+            <h3>Les Priest</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Keyboard, Guitar, Vocals</strong></p>
+                <p>Keyboardist and multi-instrumentalist, adding synth textures to their sound.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Links</h2>
+    <ul>
+        <li><a href="https://www.lanymusic.com" target="_blank">Official Website</a></li>
+        <li><a href="https://www.instagram.com/lany" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/lanymusic" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/lanymusic" target="_blank">Twitter</a></li>
+        <li><a href="https://www.youtube.com/@LANY" target="_blank">YouTube</a></li>
+        <li><a href="https://open.spotify.com/artist/0AK2k7zjO6knC3mS0Lx0Bf" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. LANY Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

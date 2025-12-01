@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirvana Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Site Logo">
+        <h1>Music Universe: Nirvana</h1>
+    </div>
+   <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/Nirvana Group Photo.png" alt="Nirvana Group Photo" class="hero-img">
+    <h2>Nirvana</h2>
+    <p>Grunge legends who defined a generation and changed rock music forever.</p>
+</section>
+
+<section class="genre" id="events">
+    <h2>Tours & Events</h2>
+    <div class="timeline-container">
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>1989 — Bleach Tour</h4>
+                <p>Tour supporting Nirvana's debut album, Bleach.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1991 — Nevermind Tour</h4>
+                <p>International tour following the breakthrough album Nevermind.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1992 — Reading Festival</h4>
+                <p>Legendary performance at Reading Festival, UK.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1993 — MTV Unplugged Recording</h4>
+                <p>Acoustic set in New York, widely regarded as one of the most intimate performances of their career.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1994 — Final European Tour</h4>
+                <p>The band’s last European tour before Kurt Cobain’s tragic passing.</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>1988 — First Live Shows</h4>
+                <p>Early shows in Seattle that built a dedicated local fanbase.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1990 — North American Tour</h4>
+                <p>Touring extensively after signing with DGC Records and gaining momentum.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1991 — MTV & Video Success</h4>
+                <p>Music videos such as “Smells Like Teen Spirit” catapulted Nirvana to international fame.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1992 — European Tour</h4>
+                <p>Supporting Nevermind, the band sold out arenas across Europe.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>1993 — Final Studio Sessions</h4>
+                <p>Band records final studio sessions, including acoustic renditions and demos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Social Links</h2>
+    <ul>
+        <li><a href="https://www.nirvana.com" target="_blank">Official Website</a></li>
+        <li><a href="https://www.facebook.com/Nirvana" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/nirvana" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/nirvana" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@Nirvana" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe — Nirvana Fan Page</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beatles Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Logo">
+        <h1>The Beatles Universe</h1>
+    </div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/b1.webp" class="hero-img">
+    <h2>The Beatles</h2>
+    <p>Legendary band that changed music forever.</p>
+</section> 
+
+<section class="genre" id="events">
+    <h2>Tours & Events</h2>
+
+    <div class="timeline-container">
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>1963 — Rise to Fame</h4>
+                <p>The Beatles explode in the UK with massive fandom.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1964 — First US Tour</h4>
+                <p>Beatlemania hits America after their historic Ed Sullivan appearance.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1965 — Shea Stadium Concert</h4>
+                <p>One of the most iconic concerts in music history with 55,000+ fans.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1966 — Final Live Tour</h4>
+                <p>The band ends live concerts to focus on studio innovation.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1970 — Let It Be Premiere</h4>
+                <p>The Beatles release their last album and film before split.</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>1964 — World Tour Begins</h4>
+                <p>The Beatles tour Denmark, Netherlands, Hong Kong, Australia, and New Zealand.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1965 — UK Tour</h4>
+                <p>Last proper British tour, selling out every venue within hours.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1966 — Tokyo Nippon Budokan</h4>
+                <p>Historic performance at the iconic martial arts arena in Japan.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1967 — Summer of Love</h4>
+                <p>Sgt. Pepper era marks a creative explosion despite no live shows.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1969 — Rooftop Concert</h4>
+                <p>The Beatles perform their final live public show on the Apple Corps rooftop.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Social Links</h2>
+    <ul>
+        <li><a href="https://www.deftones.com" target="_blank">Official Website</a></li>
+        <li><a href="https://www.facebook.com/deftones" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/deftones" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/deftones" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@deftones" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://open.spotify.com/artist/0p3tm0VZJRf7u6i1W9t3zH" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe — Beatles Fan Page</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

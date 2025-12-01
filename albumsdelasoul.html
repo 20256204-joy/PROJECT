@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De La Soul Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+    <style>
+        .album-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .album {
+            width: 200px;
+            background-color: #1f1f2e;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .album:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+        }
+
+        .album h3 {
+            font-size: 1rem;
+            color: #dcdcff;
+            margin-bottom: 5px;
+        }
+
+        .album p a {
+            color: #8b82ff;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .album p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Site Logo">
+        <h1>Music Universe: De La Soul</h1>
+    </div>
+   <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/De La Soul Group Photo.png" alt="De La Soul Group Photo" class="hero-img">
+    <h2>De La Soul</h2>
+    <p>Hip-hop trio known for playful lyrics, jazz-influenced beats, and pioneering alternative hip-hop.</p>
+</section>
+
+<main>
+</section>
+
+<section class="genre" id="albums">
+    <h2>Albums & Songs</h2>
+    <div class="album-grid">
+
+        <div class="album">
+            <img src="photos/de la soul 3 Feet High and Rising.png" alt="3 Feet High and Rising">
+            <h3>3 Feet High and Rising (1989)</h3>
+            <p><a href="https://www.youtube.com/watch?v=3KxMMzQf5oM" target="_blank">Me Myself and I</a></p>
+            <p><a href="https://www.youtube.com/watch?v=3KxMMzQf5oM" target="_blank">The Magic Number</a></p>
+            <p><a href="https://www.youtube.com/watch?v=3KxMMzQf5oM" target="_blank">Buddy</a></p>
+        </div>
+
+        <div class="album">
+            <img src="photos/de la soul De La Soul Is Dead.png" alt="De La Soul Is Dead">
+            <h3>De La Soul Is Dead (1991)</h3>
+            <p><a href="https://www.youtube.com/watch?v=z7iL6QF6X54" target="_blank">Ring Ring Ring (Ha Ha Hey)</a></p>
+            <p><a href="https://www.youtube.com/watch?v=z7iL6QF6X54" target="_blank">Millie Pulled a Pistol on Santa</a></p>
+            <p><a href="https://www.youtube.com/watch?v=z7iL6QF6X54" target="_blank">A Roller Skating Jam Named "Saturdays"</a></p>
+        </div>
+
+        <div class="album">
+            <img src="photos/de la soul Stakes Is High.png" alt="Stakes Is High">
+            <h3>Stakes Is High (1996)</h3>
+            <p><a href="https://www.youtube.com/watch?v=3rD49FFhZtM" target="_blank">Stakes Is High</a></p>
+            <p><a href="https://www.youtube.com/watch?v=3rD49FFhZtM" target="_blank">Itzsoweezee (HOT)</a></p>
+            <p><a href="https://www.youtube.com/watch?v=3rD49FFhZtM" target="_blank">4 More</a></p>
+        </div>
+
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Links</h2>
+    <ul>
+        <li><a href="https://www.delasoul.com" target="_blank">Official Website</a></li>
+        <li><a href="https://www.instagram.com/delasoul/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.facebook.com/delasoul" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/DeLaSoul" target="_blank">Twitter</a></li>
+        <li><a href="https://www.youtube.com/@delasoul" target="_blank">YouTube</a></li>
+        <li><a href="https://open.spotify.com/artist/4XwH8bOueCpwk9VIaFcKxj" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. De La Soul Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+
+</body>
+</html>

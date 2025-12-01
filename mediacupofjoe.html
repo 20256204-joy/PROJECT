@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cup of Joe Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Cup of Joe Logo">
+        <h1>Music Universe: Cup of Joe</h1>
+    </div>
+  <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/Cup of Joe Group Photo.png" alt="Cup of Joe Group Photo" class="hero-img">
+    <h2>Cup of Joe</h2>
+    <p>A fresh Filipino band known for nostalgic, heartfelt indie-pop tunes.</p>
+</section>
+
+<section class="genre" id="media">
+    <h2>Media & Gallery</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/cupofjoe-live.jpg" alt="Cup of Joe Live">
+            <p>Live performance during concerts.</p>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/cupofjoe-studio.jpg" alt="Cup of Joe Studio">
+            <p>Recording sessions in studio.</p>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/cupofjoe-award.jpg" alt="Cup of Joe Award">
+            <p>Nominated for OPM awards.</p>
+        </div>
+
+        <div class="artist-card">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/U9aQf7bYv1I" title="Mananatili" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Social Links</h2>
+    <ul>
+        <li><a href="https://open.spotify.com/artist/57R2Aqv0uQTEhaMbHenfK9" target="_blank">Spotify</a></li>
+        <li><a href="https://www.facebook.com/cupofjoemusic" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/cupofjoemusic" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@CUPOFJOEofficial" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://twitter.com/cupofjoemusic" target="_blank">Twitter</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. Cup of Joe Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

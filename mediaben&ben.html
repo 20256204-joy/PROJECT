@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben&Ben Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Ben&Ben Logo">
+        <h1>Music Universe: Ben&Ben</h1>
+    </div>
+   <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/Ben&Ben Group Photo.png" alt="Ben&Ben Group Photo" class="hero-img">
+    <h2>Ben&Ben</h2>
+    <p>One of the Philippines’ most influential folk-pop bands, known for emotional storytelling and rich harmonies.</p>
+</section>
+
+<main>
+
+<!-- MEDIA -->
+<section class="genre" id="media">
+    <h2>Media & Gallery</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/Ben&Ben Live.png" alt="Ben&Ben Live">
+            <p>Performing in front of a massive crowd.</p>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Ben&Ben Recording Session.png" alt="Recording Session">
+            <p>Recording sessions for new music.</p>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/bnb-awards.jpg" alt="Awards">
+            <p>Winning top OPM awards and recognitions.</p>
+        </div>
+
+        <div class="artist-card">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/7g37v2KGqP4" title="Ben&Ben - Kathang Isip" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+    </div>
+</section>
+
+<!-- SOCIAL LINKS -->
+<section class="genre" id="social">
+    <h2>Official Links</h2>
+    <ul>
+        <li><a href="https://open.spotify.com/artist/4DAcJ2qgXYeK8IEQ0bG6pY" target="_blank">Spotify</a></li>
+        <li><a href="https://www.facebook.com/benandbenmusic" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/benandbenmusic" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@BenAndBenMusic" target="_blank">YouTube</a></li>
+        <li><a href="https://twitter.com/benandbenmusic" target="_blank">Twitter</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. Ben&Ben Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+
+</body>
+</html>

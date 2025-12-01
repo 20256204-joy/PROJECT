@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OutKast Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+    <style>
+        /* Album Grid CSS */
+        .album-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .album {
+            width: 200px;
+            background-color: #1f1f2e;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .album:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+        }
+
+        .album h3 {
+            font-size: 1rem;
+            color: #dcdcff;
+            margin-bottom: 5px;
+        }
+
+        .album p a {
+            color: #8b82ff;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .album p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/outkast-logo.jpg" alt="OutKast Logo">
+        <h1>Music Universe: OutKast</h1>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#members">Members</a>
+        <a href="#albums">Albums</a>
+        <a href="#media">Media & Gallery</a>
+        <a href="#events">Tours & Events</a>
+        <a href="#contact">Fan Submission</a>
+        <a href="#social">Official Links</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/outkast-group.jpg" alt="OutKast Group Photo" class="hero-img">
+    <h2>OutKast</h2>
+    <p>Legendary hip-hop duo from Atlanta, famous for blending funk, soul, and Southern rap.</p>
+</section>
+
+<main>
+
+<!-- MEMBERS -->
+<section class="genre" id="members">
+    <h2>Band Members</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/andre-3000.jpg" alt="André 3000">
+            <h3>André 3000</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Vocals, Rapper, Songwriter</strong></p>
+                <p>Birth: May 27, 1975</p>
+                <p>Known for eclectic style, innovative flows, and genre-defying music.</p>
+                <p><a href="https://www.youtube.com/watch?v=UVXTU8pXhmw" target="_blank">Hey Ya!</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/big-boi.jpg" alt="Big Boi">
+            <h3>Big Boi</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Vocals, Rapper, Producer</strong></p>
+                <p>Birth: February 1, 1975</p>
+                <p>Known for smooth delivery and witty, socially conscious lyrics.</p>
+                <p><a href="https://www.youtube.com/watch?v=UVXTU8pXhmw" target="_blank">Hey Ya!</a></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="genre" id="social">
+    <h2>Official Social Links</h2>
+    <ul>
+        <li><a href="https://www.facebook.com/outkast" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/outkast" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/outkast" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@outkast" target="_blank">YouTube</a></li>
+        <li><a href="https://open.spotify.com/artist/4yvcSjfu4PC0CYQyLy4wSq" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. OutKast Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+
+</body>
+</html>

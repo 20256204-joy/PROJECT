@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run-D.M.C. Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+    <style>
+        /* Album Grid CSS */
+        .album-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .album {
+            width: 200px;
+            background-color: #1f1f2e;
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .album:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.7);
+        }
+
+        .album h3 {
+            font-size: 1rem;
+            color: #dcdcff;
+            margin-bottom: 5px;
+        }
+
+        .album p a {
+            color: #8b82ff;
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .album p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/run-dmc-logo.jpg" alt="Run-D.M.C. Logo">
+        <h1>Music Universe: Run-D.M.C.</h1>
+    </div>
+  <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/run-dmc-group.jpg" alt="Run-D.M.C. Group Photo" class="hero-img">
+    <h2>Run-D.M.C.</h2>
+    <p>Hip hop pioneers who brought rap to mainstream audiences with iconic style and beats.</p>
+</section>
+
+<!-- EVENTS -->
+<section class="genre" id="events">
+    <h2>Tours & Events</h2>
+    <ul>
+        <li>1984–1985: Run-D.M.C. Debut Tour</li>
+        <li>1986–1987: Raising Hell Tour</li>
+        <li>1988–1990: King of Rock & Collaboration Tours</li>
+        <li>1990s: Various Reunion Performances</li>
+        <li>2000s: Legacy Shows and Tributes</li>
+    </ul>
+</section>
+
+<!-- SOCIAL LINKS -->
+<section class="genre" id="social">
+    <h2>Official Links</h2>
+    <ul>
+        <li><a href="https://www.facebook.com/rundmc" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/RunDMC" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/rundmc" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@RunDMC" target="_blank">YouTube</a></li>
+        <li><a href="https://open.spotify.com/artist/3Jb0VAtPtvFMW4Uj3uxfUQ" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. Run-D.M.C. Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+
+</body>
+</html>

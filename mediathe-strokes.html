@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Strokes Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Logo">
+        <h1>The Strokes Universe</h1>
+    </div>
+   <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/The Strokes Group Photo.png" class="hero-img" alt="The Strokes Group Photo">
+    <h2>The Strokes</h2>
+    <p>Indie rock icons who shaped 2000s alternative music.</p>
+</section>
+
+<section class="genre" id="media">
+    <h2>Media & Gallery</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/The Strokes Live.png" alt="The Strokes Live">
+            <p>The Strokes performing at a major festival.</p>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/The Strokes Studio Session.png" alt="Studio Session">
+            <p>Studio session during album recording.</p>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/The Strokes Award Ceremony.png" alt="Award Ceremony">
+            <p>Receiving Best Rock Album award.</p>
+        </div>
+
+        <div class="artist-card">
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/RubBzkZzpUA" title="The Adults Are Talking" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+    </div>
+</section>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Social Links</h2>
+    <ul>
+        <li><a href="https://www.thestrokes.com" target="_blank">Official Website</a></li>
+        <li><a href="https://www.facebook.com/thestrokes" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/thestrokes" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/thestrokes" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@thestrokes" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://open.spotify.com/artist/0epOFNiUfyON9EYx7Tpr6V" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe — The Strokes Fan Page</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

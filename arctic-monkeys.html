@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arctic Monkeys Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Logo">
+        <h1>Arctic Monkeys Universe</h1>
+    </div>
+<nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/Arctic Monkeys Group Photo.png" alt="Arctic Monkeys Group Photo" class="hero-img">
+    <h2>Arctic Monkeys</h2>
+    <p>One of the most influential indie rock bands of the 21st century.</p>
+</section>
+
+<section class="genre" id="members">
+    <h2>Band Members</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/Alex Turner.png" alt="Alex Turner">
+            <h3>Alex Turner</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Lead Vocals, Guitar</strong></p>
+                <p>Birth: January 6, 1986</p>
+                <p>Frontman known for poetic lyricism and charismatic performances.</p>
+                <p><a href="https://www.youtube.com/watch?v=bpOSxM0rNPM" target="_blank">Do I Wanna Know? (Live)</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Jamie Cook.png" alt="Jamie Cook">
+            <h3>Jamie Cook</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Guitar</strong></p>
+                <p>Birth: July 8, 1985</p>
+                <p>Known for sharp riffs and defining the band’s early sound.</p>
+                <p><a href="https://www.youtube.com/watch?v=30yJjJ2fRIg" target="_blank">R U Mine? (Live)</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Nick Mason.png" alt="Nick O’Malley">
+            <h3>Nick O’Malley</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Bass Guitar</strong></p>
+                <p>Birth: July 5, 1985</p>
+                <p>Joined the band in 2006, bringing a groovy, energetic bass style.</p>
+                <p><a href="https://www.youtube.com/watch?v=1_zGz0-PLoQ" target="_blank">Arabella (Live)</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/Matt Helders.png" alt="Matt Helders">
+            <h3>Matt Helders</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Drums, Backing Vocals</strong></p>
+                <p>Birth: May 7, 1986</p>
+                <p>Dynamic drummer known for fast, sharp rhythms.</p>
+                <p><a href="https://www.youtube.com/watch?v=VQH8ZTgna3Q" target="_blank">Brianstorm (Live)</a></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe — Arctic Monkeys Fan Page</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

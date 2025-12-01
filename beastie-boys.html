@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beastie Boys Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Site Logo">
+        <h1>Music Universe: Beastie Boys</h1>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#members">Members</a>
+        <a href="#albums">Albums</a>
+        <a href="#media">Media & Gallery</a>
+        <a href="#events">Tours & Events</a>
+        <a href="#contact">Fan Submission</a>
+        <a href="#social">Official Links</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/beastieboys-group.jpg" alt="Beastie Boys Group Photo" class="hero-img">
+    <h2>Beastie Boys</h2>
+    <p>Pioneering rap-rock trio blending hip-hop, punk, and funk with groundbreaking style.</p>
+</section>
+
+<main>
+
+<!-- MEMBERS -->
+<section class="genre" id="members">
+    <h2>Band Members</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <img src="photos/mca.jpg" alt="MCA">
+            <h3>MCA (Adam Yauch)</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Rap, Bass, Vocals</strong></p>
+                <p>1964–2012. Founding member, known for deep voice, activism, and shaping the band's sound.</p>
+                <p><a href="https://www.youtube.com/watch?v=cmSbXsFE3l8" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/mike-d.jpg" alt="Mike D">
+            <h3>Mike D (Michael Diamond)</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Rap, Drums, Vocals</strong></p>
+                <p>Original member, contributed vocals, drums, and creative direction.</p>
+                <p><a href="https://www.youtube.com/watch?v=cmSbXsFE3l8" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+        <div class="artist-card">
+            <img src="photos/adrock.jpg" alt="Ad-Rock">
+            <h3>Ad-Rock (Adam Horovitz)</h3>
+            <button class="accordion">More Info</button>
+            <div class="panel">
+                <p><strong>Rap, Guitar, Vocals</strong></p>
+                <p>Known for distinctive style, blending rock and rap, and energetic performances.</p>
+                <p><a href="https://www.youtube.com/watch?v=cmSbXsFE3l8" target="_blank">Famous Performance Video</a></p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SOCIAL LINKS -->
+<section class="genre" id="social">
+    <h2>Official Links</h2>
+    <ul>
+        <li><a href="https://www.beastieboys.com" target="_blank">Official Website</a></li>
+        <li><a href="https://www.facebook.com/beastieboys" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com/beastieboys" target="_blank">Twitter</a></li>
+        <li><a href="https://www.instagram.com/beastieboys/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@beastieboys" target="_blank">YouTube</a></li>
+        <li><a href="https://open.spotify.com/artist/0wOej91SVqB1zcYkW6xUtA" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. Beastie Boys Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            panel.style.display = panel.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
+
+</body>
+</html>

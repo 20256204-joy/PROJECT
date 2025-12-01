@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KATSEYE Fan Page</title>
+    <link rel="stylesheet" href="bands.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="photos/logo.jpg" alt="Site Logo">
+        <h1>Music Universe: KATSEYE</h1>
+    </div>
+  <nav>
+        <a href="home.html">Home</a>
+        <a href="band.html">Band Members</a>
+        <a href="albums.html">Albums</a>
+        <a href="tour.html">Tour Dates</a>
+        <a href="media.html">Media</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <img src="photos/katseye-group.jpg" alt="KATSEYE group photo" class="hero-img">
+    <h2>KATSEYE</h2>
+    <p>International girl group formed through the global competition "The Debut: Dream Academy".</p>
+</section>
+
+<section class="genre" id="events">
+    <h2>Events</h2>
+    <div class="timeline-container">
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>2024 — Official Debut Showcase</h4>
+                <p>The group’s first performance introducing KATSEYE to the world.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>2024 — Global Fan Meet</h4>
+                <p>Connecting with fans from different countries online and offline.</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>2025 — First Mini Album Release</h4>
+                <p>Launching their first mini album with multiple tracks.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>2025 — Asia Promo Tour</h4>
+                <p>Promoting music and performing in various Asian countries.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="genre" id="social">
+    <h2>Official Links</h2>
+    <ul>
+        <li><a href="#" target="_blank">Official Website</a></li>
+        <li><a href="#" target="_blank">Instagram</a></li>
+        <li><a href="#" target="_blank">TikTok</a></li>
+        <li><a href="#" target="_blank">YouTube Channel</a></li>
+        <li><a href="#" target="_blank">Spotify</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>© 2025 Music Universe. KATSEYE Fan Page.</p>
+</footer>
+
+<script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(button => {
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            const panel = button.nextElementSibling;
+            if(panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
