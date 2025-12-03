@@ -1,45 +1,1400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Home | Music Universe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --radius: 12px;
+      --transition: all 0.3s ease;
+      --shadow: rgba(0, 0, 0, 0.3);
+      --accent: #7d4bff;
+      --accent-light: #9d7bff;
+      --text: #f0f0f0;
+      --text-dark: #b8b8b8;
+      --bg1: #0f0c29;
+      --bg2: #1e1a2e;
+      --card: #2a2438;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      -webkit-text-size-adjust: 100%;
+      -moz-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      background: var(--bg1);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background: rgba(23, 18, 35, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(125, 75, 255, 0.2);
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      min-height: 70px;
+      width: 100%;
+    }
+    
+    /* Logo Section */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1001;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    
+    .logo img {
+      height: 45px;
+      width: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+    
+    .logo h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--accent-light);
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    
+    /* Desktop Navigation */
+    .desktop-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    
+    .desktop-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 8px 0;
+      position: relative;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+    
+    .desktop-nav a:hover {
+      color: var(--accent-light);
+    }
+    
+    .desktop-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+    
+    .desktop-nav a:hover::after {
+      width: 100%;
+    }
+    
+    .desktop-nav a.active {
+      color: var(--accent-light);
+    }
+    
+    .desktop-nav a.active::after {
+      width: 100%;
+    }
+    
+    /* Hamburger Menu Button */
+    .hamburger-menu {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--accent-light);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 1001;
+      transition: var(--transition);
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+    
+    .hamburger-menu:hover {
+      background: rgba(125, 75, 255, 0.1);
+      color: white;
+    }
+    
+    /* Mobile Dropdown */
+    .mobile-dropdown {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 12, 41, 0.98);
+      backdrop-filter: blur(15px);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(100%);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .mobile-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+    
+    /* Mobile Navigation */
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      padding: 100px 20px 40px;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .mobile-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 18px 30px;
+      transition: var(--transition);
+      font-size: 1.4rem;
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      border-radius: var(--radius);
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      background: rgba(125, 75, 255, 0.05);
+      border: 1px solid transparent;
+    }
+    
+    .mobile-nav a:hover,
+    .mobile-nav a:active {
+      background: rgba(125, 75, 255, 0.15);
+      color: var(--accent-light);
+      border-color: rgba(125, 75, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .mobile-nav a i {
+      width: 24px;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    
+    .mobile-nav a.active {
+      background: rgba(125, 75, 255, 0.15);
+      color: var(--accent-light);
+      border-color: rgba(125, 75, 255, 0.3);
+    }
+    
+    /* Close button for mobile menu */
+    .mobile-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--accent-light);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1002;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+    }
+    
+    .mobile-close-btn:hover {
+      background: rgba(125, 75, 255, 0.1);
+    }
+    
+    /* Main content */
+    .main-content {
+      flex: 1;
+      width: 100%;
+    }
+    
+    /* Mobile Filter Button */
+    .mobile-filter-btn {
+      display: none;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      padding: 12px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      margin: 15px auto;
+      width: calc(100% - 30px);
+      max-width: 400px;
+      font-size: 1rem;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+    
+    .mobile-filter-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(125, 75, 255, 0.3);
+    }
+    
+    /* Layout Container */
+    .layout-container {
+      display: flex;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 20px;
+    }
+    
+    /* Left Panel - Filters */
+    .left-panel {
+      width: 280px;
+      flex-shrink: 0;
+      padding: 30px 20px;
+      background: var(--bg2);
+      border-right: 1px solid rgba(125, 75, 255, 0.2);
+      height: calc(100vh - 70px);
+      position: sticky;
+      top: 70px;
+      overflow-y: auto;
+    }
+    
+    .panel-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .panel-inner h3 {
+      color: var(--accent-light);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    
+    #bandSearch {
+      padding: 12px 15px;
+      background: var(--card);
+      border: 1px solid rgba(125, 75, 255, 0.3);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    #bandSearch:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(125, 75, 255, 0.2);
+    }
+    
+    .band-list {
+      list-style: none;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    
+    .band-list li {
+      padding: 12px 15px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+    
+    .band-list li:hover {
+      background: rgba(125, 75, 255, 0.1);
+      color: var(--accent-light);
+    }
+    
+    .band-list li.active {
+      background: rgba(125, 75, 255, 0.2);
+      color: var(--accent-light);
+      font-weight: 600;
+    }
+    
+    .band-list li i {
+      font-size: 1.1rem;
+    }
+    
+    .clear-btn {
+      background: rgba(125, 75, 255, 0.1);
+      color: var(--accent-light);
+      border: 1px solid rgba(125, 75, 255, 0.3);
+      border-radius: var(--radius);
+      padding: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+    }
+    
+    .clear-btn:hover {
+      background: rgba(125, 75, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    /* Main Area */
+    .main-area {
+      flex: 1;
+      padding: 30px;
+    }
+    
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: clamp(40px, 8vw, 60px) 20px;
+      background: linear-gradient(rgba(23, 18, 35, 0.85), rgba(23, 18, 35, 0.85)),
+                  url("https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      border-radius: var(--radius);
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(125,75,255,0.15), transparent 70%);
+      animation: moveGradient 8s linear infinite;
+    }
+    
+    @keyframes moveGradient {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(100px, 100px) rotate(360deg); }
+    }
+    
+    .hero h2 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: var(--accent-light);
+      margin-bottom: 15px;
+      position: relative;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: var(--text-dark);
+      max-width: min(700px, 90%);
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    /* Feed Section */
+    .feed {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    
+    /* Feed Card */
+    .feed-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(125, 75, 255, 0.1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .feed-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      border-color: rgba(125, 75, 255, 0.3);
+    }
+    
+    .card-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .card-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .band-badge {
+      background: rgba(125, 75, 255, 0.2);
+      color: var(--accent-light);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+    
+    .date {
+      color: var(--text-dark);
+      font-size: 0.85rem;
+    }
+    
+    .card-content h3 {
+      color: var(--text);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      line-height: 1.3;
+    }
+    
+    .card-content p {
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    
+    .like-btn, .comment-btn {
+      background: none;
+      border: none;
+      color: var(--text-dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      transition: var(--transition);
+      padding: 8px 12px;
+      border-radius: var(--radius);
+    }
+    
+    .like-btn:hover, .comment-btn:hover {
+      background: rgba(125, 75, 255, 0.1);
+      color: var(--accent-light);
+    }
+    
+    .like-btn.active {
+      color: #ff6b8b;
+    }
+    
+    .comment-btn.active {
+      color: var(--accent-light);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: clamp(20px, 4vw, 30px) 20px;
+      margin-top: 60px;
+      background: rgba(23, 18, 35, 0.9);
+      border-top: 1px solid rgba(125, 75, 255, 0.2);
+      color: var(--text-dark);
+      font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+      width: 100%;
+    }
+    
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS
+    ========================================================= */
+    
+    /* Large Tablets and Small Laptops (1024px and below) */
+    @media (max-width: 1024px) {
+      .desktop-nav {
+        display: none;
+      }
+      
+      .hamburger-menu {
+        display: flex;
+      }
+      
+      .left-panel {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        bottom: 0;
+        z-index: 998;
+        width: 300px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        padding: 20px;
+        background: var(--bg2);
+        border-right: 1px solid rgba(125, 75, 255, 0.2);
+        height: calc(100vh - 70px);
+      }
+      
+      .left-panel.active {
+        transform: translateX(0);
+      }
+      
+      .mobile-filter-btn {
+        display: flex;
+      }
+      
+      .layout-container {
+        flex-direction: column;
+        padding: 0;
+      }
+      
+      .main-area {
+        padding: 20px;
+        width: 100%;
+      }
+      
+      .feed {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+    
+    /* Tablets (768px and below) */
+    @media (max-width: 768px) {
+      header {
+        padding: 12px 3%;
+      }
+      
+      .logo h1 {
+        font-size: 1.4rem;
+      }
+      
+      .logo img {
+        height: 40px;
+        width: 40px;
+      }
+      
+      .hero {
+        padding: 40px 15px;
+      }
+      
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .main-area {
+        padding: 15px;
+      }
+      
+      .feed {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      
+      .mobile-nav {
+        padding: 80px 15px 30px;
+      }
+      
+      .mobile-nav a {
+        font-size: 1.2rem;
+        padding: 16px 25px;
+        max-width: 280px;
+      }
+      
+      .left-panel {
+        width: 280px;
+      }
+    }
+    
+    /* Mobile Devices (480px and below) */
+    @media (max-width: 480px) {
+      .logo h1 {
+        font-size: 1.3rem;
+      }
+      
+      .logo img {
+        height: 36px;
+        width: 36px;
+      }
+      
+      header {
+        padding: 10px 2%;
+      }
+      
+      .hamburger-menu {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+      
+      .hero {
+        padding: 30px 10px;
+      }
+      
+      .hero h2 {
+        font-size: 1.4rem;
+      }
+      
+      .hero p {
+        font-size: 0.95rem;
+      }
+      
+      .feed {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .mobile-nav a {
+        font-size: 1.1rem;
+        padding: 14px 20px;
+        max-width: 260px;
+      }
+      
+      .mobile-close-btn {
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+      }
+      
+      .left-panel {
+        width: 100%;
+        padding: 20px 15px;
+      }
+      
+      .band-list {
+        max-height: 250px;
+      }
+    }
+    
+    /* Small Mobile Devices (360px and below) */
+    @media (max-width: 360px) {
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+      
+      .logo img {
+        height: 32px;
+        width: 32px;
+      }
+      
+      .logo {
+        gap: 8px;
+      }
+      
+      header {
+        padding: 8px 2%;
+        min-height: 60px;
+      }
+      
+      .hero h2 {
+        font-size: 1.3rem;
+      }
+      
+      .mobile-nav a {
+        font-size: 1rem;
+        padding: 12px 18px;
+        max-width: 240px;
+      }
+      
+      .card-content h3 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Ultra-wide screens (1920px and above) */
+    @media (min-width: 1920px) {
+      .layout-container {
+        max-width: 1800px;
+      }
+      
+      .desktop-nav {
+        gap: 30px;
+      }
+      
+      .desktop-nav a {
+        font-size: 1.1rem;
+      }
+    }
+    
+    /* Landscape Mode on Mobile */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .mobile-nav {
+        padding: 60px 20px 20px;
+        min-height: auto;
+      }
+      
+      .mobile-nav a {
+        padding: 10px 20px;
+        margin: 5px 0;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header>
+  <!-- Header with Hamburger Menu -->
+  <header>
     <div class="logo">
-        <img src="photos/logo.jpg" alt="Site Logo">
-        <h1>Music Universe</h1>
+      <img src="photos/logo.jpg" alt="Music Universe Logo" onerror="this.src='https://via.placeholder.com/45?text=MU'">
+      <h1>Music Universe</h1>
     </div>
     
-   <nav>
-        <a href="home.html">Home</a>
-        <a href="band.html">Band Members</a>
-        <a href="albums.html">Albums</a>
-        <a href="tour.html">Tour Dates</a>
-        <a href="media.html">Media</a>
-        <a href="contact.html">Contact</a>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a href="home.html" class="active">Home</a>
+      <a href="band.html">Band Members</a>
+      <a href="albums.html">Albums</a>
+      <a href="tour.html">Tour Dates</a>
+      <a href="media.html">Media</a>
+      <a href="contact.html">Contact</a>
     </nav>
+    
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Mobile Dropdown - Full Screen Overlay -->
+    <div class="mobile-dropdown" id="mobileDropdown">
+      <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav class="mobile-nav">
+        <a href="home.html" class="active">
+          <i class="fas fa-home"></i> Home
+        </a>
+        <a href="band.html">
+          <i class="fas fa-users"></i> Band Members
+        </a>
+        <a href="albums.html">
+          <i class="fas fa-compact-disc"></i> Albums
+        </a>
+        <a href="tour.html">
+          <i class="fas fa-calendar-alt"></i> Tour Dates
+        </a>
+        <a href="media.html">
+          <i class="fas fa-photo-video"></i> Media
+        </a>
+        <a href="contact.html">
+          <i class="fas fa-envelope"></i> Contact
+        </a>
+      </nav>
+    </div>
+  </header>
 
-</header>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Mobile Filter Button (shown only on mobile) -->
+    <button id="toggleFilters" class="mobile-filter-btn">
+      <i class="fas fa-filter"></i> Filter by Band
+    </button>
+    
+    <div class="layout-container">
+      <!-- Left Panel - Filters -->
+      <aside id="leftPanel" class="left-panel">
+        <div class="panel-inner">
+          <h3>Filter by Band</h3>
+          <input id="bandSearch" placeholder="Search band..." />
+          <ul id="bandFilterList" class="band-list">
+            <!-- Band list will be populated by JavaScript -->
+          </ul>
+          <button id="clearFilter" class="clear-btn">Show all</button>
+        </div>
+      </aside>
 
-<section class="hero">
-    <h2>Discover Bands • Albums • Tours • Stories</h2>
-    <p>Explore legendary music and new favorites</p>
-</section>
+      <!-- Main Area -->
+      <main class="main-area">
+        <section class="hero">
+          <h2>Discover Bands • Albums • Tours • Stories</h2>
+          <p>Live updates and official links — like and comment on posts below.</p>
+        </section>
 
-<main>
+        <section class="feed" id="feed">
+          <!-- Feed items will be populated by JavaScript -->
+        </section>
+      </main>
+    </div>
+    
+    <footer>
+      <p>© 2025 Music Universe. All rights reserved.</p>
+      <p>Discover the universe of music with us.</p>
+    </footer>
+  </div>
 
+  <script>
+    // Updated sample data for bands and feed posts with the specified categories
+    const bands = [
+      // 🎸 ROCK Legends
+      { id: 1, name: "The Beatles", icon: "fas fa-guitar", category: "rock" },
+      { id: 2, name: "Nirvana", icon: "fas fa-guitar", category: "rock" },
+      { id: 3, name: "Deftones", icon: "fas fa-guitar", category: "rock" },
+      { id: 4, name: "Pink Floyd", icon: "fas fa-guitar", category: "rock" },
+      { id: 5, name: "Queen", icon: "fas fa-guitar", category: "rock" },
+      
+      // 🎧 Alternative / Indie
+      { id: 6, name: "Radiohead", icon: "fas fa-headphones", category: "alternative" },
+      { id: 7, name: "Coldplay", icon: "fas fa-headphones", category: "alternative" },
+      { id: 8, name: "Arctic Monkeys", icon: "fas fa-headphones", category: "alternative" },
+      { id: 9, name: "The Strokes", icon: "fas fa-headphones", category: "alternative" },
+      { id: 10, name: "The Smashing Pumpkins", icon: "fas fa-headphones", category: "alternative" },
+      
+      // 🎤 Pop & Local Artists
+      { id: 11, name: "Cup of Joe", icon: "fas fa-microphone", category: "pop" },
+      { id: 12, name: "Katseye", icon: "fas fa-microphone", category: "pop" },
+      { id: 13, name: "Ben&Ben", icon: "fas fa-microphone", category: "pop" },
+      { id: 14, name: "Paramore", icon: "fas fa-microphone", category: "pop" },
+      { id: 15, name: "LANY", icon: "fas fa-microphone", category: "pop" },
+      
+      // 🎶 Hip-Hop Bands & Groups
+      { id: 16, name: "N.W.A", icon: "fas fa-music", category: "hiphop" },
+      { id: 17, name: "De La Soul", icon: "fas fa-music", category: "hiphop" },
+      { id: 18, name: "Outkast", icon: "fas fa-music", category: "hiphop" },
+      { id: 19, name: "Beastie Boys", icon: "fas fa-music", category: "hiphop" },
+      { id: 20, name: "Run-DMC", icon: "fas fa-music", category: "hiphop" }
+    ];
 
-</main>
+    const feedPosts = [
+      // Rock Legends Posts
+      { 
+        id: 1, 
+        bandId: 1, 
+        bandName: "The Beatles", 
+        title: "'Revolver' Remastered Edition Released", 
+        date: "2025-03-20",
+        image: "https://images.unsplash.com/photo-1519281682544-5f37c5d2c20b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "The legendary 1966 album 'Revolver' gets a special remastered edition with never-before-heard demos and studio outtakes.",
+        likes: 3240,
+        comments: 210,
+        liked: false
+      },
+      { 
+        id: 2, 
+        bandId: 2, 
+        bandName: "Nirvana", 
+        title: "30th Anniversary of 'Nevermind' Celebration", 
+        date: "2025-03-18",
+        image: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Special events planned worldwide to celebrate the 30th anniversary of the groundbreaking album that changed rock music forever.",
+        likes: 4120,
+        comments: 380,
+        liked: true
+      },
+      { 
+        id: 3, 
+        bandId: 3, 
+        bandName: "Deftones", 
+        title: "New Studio Album in Production", 
+        date: "2025-03-15",
+        image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "The alt-metal pioneers have entered the studio to work on their highly anticipated follow-up to 'Ohms'.",
+        likes: 2850,
+        comments: 195,
+        liked: false
+      },
+      
+      // Alternative/Indie Posts
+      { 
+        id: 4, 
+        bandId: 6, 
+        bandName: "Radiohead", 
+        title: "'Kid A' Exhibition Opens in London", 
+        date: "2025-03-12",
+        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Interactive art exhibition celebrating the 25th anniversary of Radiohead's groundbreaking electronic album 'Kid A'.",
+        likes: 3560,
+        comments: 280,
+        liked: true
+      },
+      { 
+        id: 5, 
+        bandId: 8, 
+        bandName: "Arctic Monkeys", 
+        title: "Summer Festival Headlining Tour", 
+        date: "2025-03-10",
+        image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "The Sheffield rockers announced as headliners for major European festivals including Glastonbury and Reading & Leeds.",
+        likes: 4280,
+        comments: 320,
+        liked: false
+      },
+      
+      // Pop & Local Artists Posts
+      { 
+        id: 6, 
+        bandId: 13, 
+        bandName: "Ben&Ben", 
+        title: "'Lunod' World Tour Dates Added", 
+        date: "2025-03-08",
+        image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Due to overwhelming demand, Ben&Ben adds additional dates to their North American and European tour legs.",
+        likes: 5120,
+        comments: 420,
+        liked: true
+      },
+      { 
+        id: 7, 
+        bandId: 14, 
+        bandName: "Paramore", 
+        title: "New Single 'Thick Skull' Released", 
+        date: "2025-03-05",
+        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Paramore returns with their first new music in two years, showcasing their evolving sound and lyrical depth.",
+        likes: 3850,
+        comments: 310,
+        liked: false
+      },
+      
+      // Hip-Hop Posts
+      { 
+        id: 8, 
+        bandId: 16, 
+        bandName: "N.W.A", 
+        title: "Biopic Series in Development", 
+        date: "2025-03-01",
+        image: "https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Limited series about the legendary hip-hop group's rise to fame and cultural impact set to begin production.",
+        likes: 2950,
+        comments: 240,
+        liked: true
+      },
+      { 
+        id: 9, 
+        bandId: 20, 
+        bandName: "Run-DMC", 
+        title: "40th Anniversary Vinyl Box Set", 
+        date: "2025-02-28",
+        image: "https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Complete discography remastered and pressed on limited edition colored vinyl to celebrate four decades of hip-hop history.",
+        likes: 2670,
+        comments: 195,
+        liked: false
+      },
+      { 
+        id: 10, 
+        bandId: 4, 
+        bandName: "Pink Floyd", 
+        title: "'The Dark Side of the Moon' 50th Anniversary", 
+        date: "2025-02-25",
+        image: "https://images.unsplash.com/photo-1519281682544-5f37c5d2c20b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
+        content: "Special anniversary edition features new Dolby Atmos mix and previously unreleased live recordings from 1973.",
+        likes: 5480,
+        comments: 410,
+        liked: true
+      }
+    ];
 
-<footer id="contact">
-    <h3>Contact</h3>
-    <p>Email: bandfanclub@gmail.com</p>
-    <p>© 2025 Music Universe</p>
-</footer>
+    // Improved Hamburger Menu Functionality
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+    const mobileDropdown = document.getElementById('mobileDropdown');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+    const body = document.body;
+    const html = document.documentElement;
 
+    // Function to toggle mobile menu
+    function toggleMobileMenu() {
+      const isActive = mobileDropdown.classList.toggle('active');
+      const icon = hamburgerBtn.querySelector('i');
+      
+      if (isActive) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        body.style.overflow = 'hidden';
+        html.style.overflow = 'hidden';
+        hamburgerBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        body.style.overflow = '';
+        html.style.overflow = '';
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    // Function to close mobile menu
+    function closeMobileMenu() {
+      mobileDropdown.classList.remove('active');
+      const icon = hamburgerBtn.querySelector('i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+      body.style.overflow = '';
+      html.style.overflow = '';
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Event listeners for hamburger menu
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+
+    // Close button
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+
+    // Close menu when clicking on a link
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!hamburgerBtn.contains(e.target) && 
+          !mobileDropdown.contains(e.target) && 
+          mobileDropdown.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close menu with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDropdown.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Mobile filter panel functionality
+    const toggleFiltersBtn = document.getElementById('toggleFilters');
+    const leftPanel = document.getElementById('leftPanel');
+    
+    toggleFiltersBtn.addEventListener('click', () => {
+      leftPanel.classList.toggle('active');
+    });
+    
+    // Close filter panel when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024 && 
+          !toggleFiltersBtn.contains(e.target) && 
+          !leftPanel.contains(e.target) && 
+          leftPanel.classList.contains('active')) {
+        leftPanel.classList.remove('active');
+      }
+    });
+
+    // Initialize the band filter list
+    const bandFilterList = document.getElementById('bandFilterList');
+    const bandSearch = document.getElementById('bandSearch');
+    const clearFilterBtn = document.getElementById('clearFilter');
+    const feed = document.getElementById('feed');
+    
+    let selectedBandId = null;
+    
+    function renderBandList() {
+      bandFilterList.innerHTML = '';
+      
+      // Add category headers
+      const categories = [
+        { name: "🎸 ROCK Legends", type: "rock" },
+        { name: "🎧 Alternative / Indie", type: "alternative" },
+        { name: "🎤 Pop & Local Artists", type: "pop" },
+        { name: "🎶 Hip-Hop Bands & Groups", type: "hiphop" }
+      ];
+      
+      categories.forEach(category => {
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'category-header';
+        categoryHeader.style.cssText = `
+          margin-top: 15px;
+          margin-bottom: 8px;
+          padding: 8px 12px;
+          background: rgba(125, 75, 255, 0.1);
+          border-radius: 6px;
+          font-weight: 600;
+          color: var(--accent-light);
+          font-size: 0.9rem;
+          border-left: 3px solid var(--accent);
+        `;
+        categoryHeader.textContent = category.name;
+        bandFilterList.appendChild(categoryHeader);
+        
+        // Add bands for this category
+        const categoryBands = bands.filter(band => band.category === category.type);
+        categoryBands.forEach(band => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="${band.icon}"></i> ${band.name}`;
+          li.dataset.id = band.id;
+          
+          if (selectedBandId === band.id) {
+            li.classList.add('active');
+          }
+          
+          li.addEventListener('click', () => {
+            selectedBandId = band.id;
+            renderBandList();
+            renderFeed();
+            
+            // Close filter panel on mobile after selection
+            if (window.innerWidth <= 1024) {
+              leftPanel.classList.remove('active');
+            }
+          });
+          
+          bandFilterList.appendChild(li);
+        });
+      });
+    }
+    
+    function renderFeed() {
+      feed.innerHTML = '';
+      
+      // Filter posts if a band is selected
+      const filteredPosts = selectedBandId 
+        ? feedPosts.filter(post => post.bandId === selectedBandId)
+        : feedPosts;
+      
+      if (filteredPosts.length === 0) {
+        feed.innerHTML = `
+          <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-dark);">
+            <i class="fas fa-music" style="font-size: 3rem; margin-bottom: 20px; display: block; color: var(--accent);"></i>
+            <h3>No posts found for this band</h3>
+            <p>Try selecting a different band or view all posts.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      filteredPosts.forEach(post => {
+        const card = document.createElement('div');
+        card.className = 'feed-card';
+        
+        // Format date
+        const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+        
+        card.innerHTML = `
+          <img src="${post.image}" alt="${post.title}" class="card-image" onerror="this.src='https://via.placeholder.com/400x200?text=Music+Universe'">
+          <div class="card-content">
+            <div class="card-header">
+              <span class="band-badge">${post.bandName}</span>
+              <span class="date">${formattedDate}</span>
+            </div>
+            <h3>${post.title}</h3>
+            <p>${post.content}</p>
+            <div class="card-actions">
+              <button class="like-btn ${post.liked ? 'active' : ''}" data-id="${post.id}">
+                <i class="fas fa-heart"></i>
+                <span>${post.likes.toLocaleString()}</span>
+              </button>
+              <button class="comment-btn">
+                <i class="fas fa-comment"></i>
+                <span>${post.comments.toLocaleString()}</span>
+              </button>
+            </div>
+          </div>
+        `;
+        
+        feed.appendChild(card);
+      });
+      
+      // Add event listeners to like buttons
+      document.querySelectorAll('.like-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const postId = parseInt(this.dataset.id);
+          const post = feedPosts.find(p => p.id === postId);
+          
+          if (post) {
+            post.liked = !post.liked;
+            post.likes += post.liked ? 1 : -1;
+            
+            this.classList.toggle('active');
+            this.querySelector('span').textContent = post.likes.toLocaleString();
+            
+            // Add animation effect
+            const icon = this.querySelector('i');
+            icon.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+              icon.style.transform = 'scale(1)';
+            }, 300);
+          }
+        });
+      });
+    }
+    
+    // Search functionality for bands
+    bandSearch.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      
+      document.querySelectorAll('#bandFilterList li').forEach(li => {
+        const bandName = li.textContent.toLowerCase();
+        li.style.display = bandName.includes(searchTerm) ? '' : 'none';
+      });
+      
+      // Show/hide category headers based on visible bands
+      document.querySelectorAll('.category-header').forEach(header => {
+        const nextElements = [];
+        let nextSibling = header.nextElementSibling;
+        
+        // Collect all bands under this category
+        while (nextSibling && nextSibling.tagName === 'LI') {
+          nextElements.push(nextSibling);
+          nextSibling = nextSibling.nextElementSibling;
+        }
+        
+        // Check if any bands in this category are visible
+        const hasVisibleBands = nextElements.some(li => li.style.display !== 'none');
+        header.style.display = hasVisibleBands || searchTerm === '' ? '' : 'none';
+      });
+    });
+    
+    // Clear filter button
+    clearFilterBtn.addEventListener('click', () => {
+      selectedBandId = null;
+      renderBandList();
+      renderFeed();
+      bandSearch.value = '';
+      
+      // Close filter panel on mobile
+      if (window.innerWidth <= 1024) {
+        leftPanel.classList.remove('active');
+      }
+    });
+    
+    // Initialize everything
+    renderBandList();
+    renderFeed();
+    
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        // Close mobile menu on resize if it's open
+        if (window.innerWidth > 1024 && mobileDropdown.classList.contains('active')) {
+          closeMobileMenu();
+        }
+        
+        // Hide filter panel on desktop
+        if (window.innerWidth > 1024) {
+          leftPanel.classList.remove('active');
+        }
+      }, 250);
+    });
+    
+    // Improved scroll effect for header
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    let isScrolling = false;
+
+    window.addEventListener('scroll', () => {
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // Close mobile menu when scrolling
+          if (mobileDropdown.classList.contains('active') && scrollTop > 50) {
+            closeMobileMenu();
+          }
+          
+          if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+          } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+          }
+          
+          // Add shadow when scrolled
+          if (scrollTop > 50) {
+            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+          } else {
+            header.style.boxShadow = 'none';
+          }
+          
+          lastScrollTop = scrollTop;
+          isScrolling = false;
+        });
+        isScrolling = true;
+      }
+    });
+
+    // Prevent body scroll when mobile menu is open
+    mobileDropdown.addEventListener('touchmove', function(e) {
+      if (mobileDropdown.classList.contains('active')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // Initialize accessibility attributes
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerBtn.setAttribute('aria-controls', 'mobileDropdown');
+    mobileDropdown.setAttribute('aria-hidden', 'true');
+    toggleFiltersBtn.setAttribute('aria-expanded', 'false');
+    toggleFiltersBtn.setAttribute('aria-controls', 'leftPanel');
+
+    // Update accessibility attributes when menu opens/closes
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class') {
+          const isActive = mobileDropdown.classList.contains('active');
+          mobileDropdown.setAttribute('aria-hidden', !isActive);
+          
+          const isFilterActive = leftPanel.classList.contains('active');
+          toggleFiltersBtn.setAttribute('aria-expanded', isFilterActive);
+        }
+      });
+    });
+
+    observer.observe(mobileDropdown, { attributes: true });
+    observer.observe(leftPanel, { attributes: true });
+  </script>
 </body>
 </html>
