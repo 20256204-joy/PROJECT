@@ -2,1888 +2,302 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Contact | Music Universe</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Universe - Bands</title>
+    <link rel="stylesheet" href="band.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --radius: 12px;
-            --transition: all 0.3s ease;
-            --shadow: rgba(0, 0, 0, 0.3);
-            --accent: #7d4bff;
-            --accent-light: #9d7bff;
-            --text: #f0f0f0;
-            --text-dark: #b8b8b8;
-            --bg2: #1e1a2e;
-            --card: #2a2438;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        html {
-            -webkit-text-size-adjust: 100%;
-            -moz-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            background: #0f0c29;
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        /* Improved Header with Better Responsive Handling */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: rgba(23, 18, 35, 0.98);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(125, 75, 255, 0.2);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            transition: var(--transition);
-            min-height: 70px;
-            width: 100%;
-        }
-        
-        /* Logo Section - Made more responsive */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1001;
-            flex-shrink: 0;
-        }
-        
-        .logo img {
-            height: 45px;
-            width: 45px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent);
-        }
-        
-        .logo h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: var(--accent-light);
-            white-space: nowrap;
-            font-weight: 600;
-        }
-        
-        /* Desktop Navigation - Hidden on mobile */
-        .desktop-nav {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        
-        .desktop-nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 8px 0;
-            position: relative;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-        
-        .desktop-nav a:hover {
-            color: var(--accent-light);
-        }
-        
-        .desktop-nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .desktop-nav a:hover::after {
-            width: 100%;
-        }
-        
-        /* Hamburger Menu Button - Improved for all devices */
-        .hamburger-menu {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--accent-light);
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-            transition: var(--transition);
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-        }
-        
-        .hamburger-menu:hover {
-            background: rgba(125, 75, 255, 0.1);
-            color: white;
-        }
-        
-        /* Mobile Dropdown - Full screen overlay for better mobile experience */
-        .mobile-dropdown {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(15, 12, 41, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .mobile-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-        
-        /* Mobile Navigation - Centered and aligned */
-        .mobile-nav {
-            display: flex;
-            flex-direction: column;
-            padding: 100px 20px 40px;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .mobile-nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 18px 30px;
-            transition: var(--transition);
-            font-size: 1.4rem;
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            border-radius: var(--radius);
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: rgba(125, 75, 255, 0.05);
-            border: 1px solid transparent;
-        }
-        
-        .mobile-nav a:hover,
-        .mobile-nav a:active {
-            background: rgba(125, 75, 255, 0.15);
-            color: var(--accent-light);
-            border-color: rgba(125, 75, 255, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .mobile-nav a i {
-            width: 24px;
-            text-align: center;
-            font-size: 1.3rem;
-        }
-        
-        /* Close button for mobile menu */
-        .mobile-close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--accent-light);
-            font-size: 1.8rem;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1002;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-        }
-        
-        .mobile-close-btn:hover {
-            background: rgba(125, 75, 255, 0.1);
-        }
-        
-        /* Main content adjustment for fixed header */
-        .main-content {
-            margin-top: 70px;
-            flex: 1;
-            width: 100%;
-        }
-        
-        /* Contact Hero Section - Responsive */
-        .contact-hero {
-            text-align: center;
-            padding: clamp(40px, 8vw, 80px) 20px;
-            background: linear-gradient(rgba(23, 18, 35, 0.85), rgba(23, 18, 35, 0.85)),
-                        url("photos/contact-bg.jpg") center/cover no-repeat;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-hero::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(125,75,255,0.15), transparent 70%);
-            animation: moveGradient 8s linear infinite;
-        }
-        
-        @keyframes moveGradient {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            100% { transform: translate(100px, 100px) rotate(360deg); }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .contact-hero h1, .contact-hero p {
-            position: relative;
-            z-index: 2;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards;
-        }
-        
-        .contact-hero h1 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            color: var(--accent-light);
-            margin-bottom: 15px;
-            animation-delay: 0.3s;
-            line-height: 1.2;
-        }
-        
-        .contact-hero p {
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            color: var(--text-dark);
-            max-width: min(700px, 90%);
-            margin: 0 auto;
-            animation-delay: 0.6s;
-        }
-        
-        /* Contact Container - Improved grid */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
-            gap: clamp(20px, 4vw, 30px);
-            padding: clamp(20px, 5vw, 40px) clamp(15px, 5vw, 6%);
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
-        /* Contact Form Section */
-        .form-section {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: clamp(20px, 4vw, 30px);
-            box-shadow: 0 8px 25px var(--shadow);
-            border: 1px solid rgba(125, 75, 255, 0.2);
-            width: 100%;
-        }
-        
-        .form-section h2 {
-            color: var(--accent-light);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .form-section h2 i {
-            font-size: 1.4rem;
-        }
-        
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .form-group label {
-            font-weight: 600;
-            color: var(--text);
-            font-size: clamp(0.9rem, 3vw, 0.95rem);
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            padding: clamp(10px, 3vw, 12px);
-            background: var(--bg2);
-            border: 1px solid #271c3e;
-            border-radius: var(--radius);
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(0.95rem, 3vw, 1rem);
-            transition: var(--transition);
-            width: 100%;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(125, 75, 255, 0.2);
-        }
-        
-        .form-group textarea {
-            min-height: 140px;
-            resize: vertical;
-            min-width: 100%;
-            max-width: 100%;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-            gap: clamp(10px, 3vw, 15px);
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: #fff;
-            padding: clamp(12px, 3vw, 14px);
-            border: none;
-            border-radius: var(--radius);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: clamp(0.95rem, 3vw, 1rem);
-            transition: var(--transition);
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            min-height: 48px;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(125, 75, 255, 0.3);
-        }
-        
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-        
-        /* Info Section */
-        .info-section {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: clamp(20px, 4vw, 30px);
-            box-shadow: 0 8px 25px var(--shadow);
-            border: 1px solid rgba(125, 75, 255, 0.2);
-            width: 100%;
-        }
-        
-        .info-section h2 {
-            color: var(--accent-light);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .info-section h2 i {
-            font-size: 1.4rem;
-        }
-        
-        /* Contact Cards */
-        .contact-cards {
-            display: flex;
-            flex-direction: column;
-            gap: clamp(12px, 3vw, 15px);
-            margin-bottom: 25px;
-        }
-        
-        .contact-card {
-            background: var(--bg2);
-            border-radius: var(--radius);
-            padding: clamp(15px, 3vw, 18px);
-            display: flex;
-            align-items: center;
-            gap: clamp(12px, 3vw, 15px);
-            transition: var(--transition);
-            border-left: 4px solid var(--accent);
-            flex-wrap: wrap;
-        }
-        
-        .contact-card:hover {
-            transform: translateX(5px);
-            background: rgba(125, 75, 255, 0.1);
-        }
-        
-        .contact-card i {
-            font-size: clamp(1.4rem, 4vw, 1.6rem);
-            color: var(--accent);
-            width: clamp(40px, 10vw, 45px);
-            height: clamp(40px, 10vw, 45px);
-            background: rgba(125, 75, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .contact-card-content h3 {
-            color: var(--accent-light);
-            margin-bottom: 5px;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-        }
-        
-        .contact-card-content p {
-            color: var(--text-dark);
-            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
-            line-height: 1.5;
-        }
-        
-        /* Social Links */
-        .social-section h3 {
-            color: var(--accent-light);
-            margin-bottom: 15px;
-            font-size: clamp(1.1rem, 3vw, 1.2rem);
-        }
-        
-        .social-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: clamp(40px, 10vw, 45px);
-            height: clamp(40px, 10vw, 45px);
-            background: var(--bg2);
-            border-radius: 50%;
-            color: var(--text);
-            font-size: clamp(1.1rem, 3vw, 1.2rem);
-            transition: var(--transition);
-            text-decoration: none;
-            flex-shrink: 0;
-        }
-        
-        .social-link:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-5px) rotate(5deg);
-        }
-        
-        /* Revised Map Section - Fully responsive */
-        .map-section {
-            padding: clamp(20px, 5vw, 40px) clamp(15px, 5vw, 6%);
-            max-width: 1400px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, rgba(15, 12, 41, 0.9) 0%, rgba(26, 26, 46, 0.9) 50%, rgba(22, 33, 62, 0.9) 100%);
-            border-radius: var(--radius);
-            margin-top: 40px;
-            border: 1px solid rgba(125, 75, 255, 0.2);
-            box-shadow: 0 8px 25px var(--shadow);
-            width: 100%;
-        }
-        
-        .map-section h2 {
-            color: var(--accent-light);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .map-section h2 i {
-            font-size: 1.4rem;
-            color: #8a2be2;
-        }
-        
-        .map-container-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: clamp(15px, 4vw, 25px);
-            align-items: stretch;
-            margin-bottom: 30px;
-        }
-        
-        .map-column {
-            flex: 1.5;
-            min-width: min(100%, 300px);
-            height: clamp(300px, 50vh, 450px);
-            width: 100%;
-        }
-        
-        .map-frame {
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            height: 100%;
-            border: 1px solid #333;
-            position: relative;
-            width: 100%;
-        }
-        
-        .map-frame iframe {
-            border: 0;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            filter: grayscale(20%) contrast(110%);
-        }
-        
-        .map-info-column {
-            flex: 1;
-            min-width: min(100%, 300px);
-            background: rgba(30, 30, 46, 0.8);
-            padding: clamp(20px, 4vw, 25px);
-            border-radius: var(--radius);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #444;
-            backdrop-filter: blur(10px);
-            width: 100%;
-        }
-        
-        .map-location-header h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ffffff;
-            font-size: clamp(1.2rem, 3.5vw, 1.4rem);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            flex-wrap: wrap;
-        }
-        
-        .map-location-header h3 i {
-            color: #ff6b8b;
-        }
-        
-        .map-location-header p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-size: clamp(0.95rem, 2.5vw, 1rem);
-        }
-        
-        .map-info-card {
-            margin-bottom: clamp(15px, 3vw, 1.2rem);
-            padding: clamp(12px, 3vw, 1rem);
-            background: rgba(40, 40, 60, 0.6);
-            border-radius: 8px;
-            border-left: 4px solid;
-        }
-        
-        .map-coordinates-card {
-            border-left-color: #8a2be2;
-        }
-        
-        .map-about-card {
-            border-left-color: #ff6b8b;
-        }
-        
-        .map-info-card h4 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #ffffff;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            margin-top: 0;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            flex-wrap: wrap;
-        }
-        
-        .map-coordinates-card h4 i {
-            color: #6cb2eb;
-        }
-        
-        .map-about-card h4 i {
-            color: #20c997;
-        }
-        
-        .coordinate-display {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .coordinate-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .coordinate-row i {
-            color: #888;
-            font-size: 0.85rem;
-        }
-        
-        .coordinate-value {
-            font-family: 'Courier New', monospace;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: 500;
-            color: #6cb2eb;
-            border: 1px solid #444;
-            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
-            word-break: break-all;
-        }
-        
-        .coordinate-label {
-            color: #888;
-            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
-        }
-        
-        /* Improved Map Button Container */
-        .map-button-container {
-            margin-top: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .button-row {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        /* Attractive Map Button */
-        .map-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: clamp(10px, 3vw, 12px) clamp(15px, 3vw, 18px);
-            background: linear-gradient(135deg, #8a2be2 0%, #6a11cb 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
-            text-align: center;
-            border: none;
-            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
-            flex: 2;
-            min-width: min(100%, 200px);
-            position: relative;
-            overflow: hidden;
-            min-height: 48px;
-        }
-        
-        .map-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.6);
-            background: linear-gradient(135deg, #9b30ff 0%, #7a1dcb 100%);
-        }
-        
-        .map-button-alt {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: clamp(10px, 2.5vw, 12px) clamp(12px, 2.5vw, 15px);
-            background: rgba(40, 40, 60, 0.8);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 1px solid #555;
-            text-align: center;
-            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
-            flex: 1;
-            min-width: min(100%, 140px);
-            min-height: 44px;
-        }
-        
-        .map-button-alt:hover {
-            background: rgba(60, 60, 80, 0.8);
-            border-color: #8a2be2;
-            transform: translateY(-2px);
-        }
-        
-        .button-note {
-            color: #888;
-            font-size: clamp(0.75rem, 2.5vw, 0.8rem);
-            text-align: center;
-            margin-top: 5px;
-            line-height: 1.4;
-        }
-        
-        .getting-here-section {
-            margin-top: clamp(20px, 4vw, 2rem);
-            padding: clamp(15px, 3vw, 1.2rem);
-            background: rgba(30, 30, 46, 0.8);
-            border-radius: var(--radius);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #444;
-        }
-        
-        .getting-here-section h4 {
-            color: #ffffff;
-            font-size: clamp(1rem, 3vw, 1.1rem);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .getting-here-section h4 i {
-            color: #ffcc00;
-        }
-        
-        .transport-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-            gap: clamp(12px, 3vw, 15px);
-        }
-        
-        .transport-option {
-            padding: clamp(12px, 3vw, 0.8rem);
-            background: rgba(40, 40, 60, 0.6);
-            border-radius: 8px;
-        }
-        
-        .transport-option h5 {
-            color: #ffffff;
-            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        
-        .transport-option .fa-car {
-            color: #ff6b8b;
-        }
-        
-        .transport-option .fa-bus {
-            color: #ffcc00;
-        }
-        
-        .transport-option .fa-plane {
-            color: #6cb2eb;
-        }
-        
-        .transport-option p {
-            color: #b0b0b0;
-            font-size: clamp(0.8rem, 2.5vw, 0.85rem);
-            margin: 0;
-            line-height: 1.5;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            padding: clamp(20px, 5vw, 40px) clamp(15px, 5vw, 6%);
-            max-width: 1400px;
-            margin: 0 auto;
-            background: var(--card);
-            border-radius: var(--radius);
-            margin-top: 40px;
-            border: 1px solid rgba(125, 75, 255, 0.2);
-            box-shadow: 0 8px 25px var(--shadow);
-            width: 100%;
-        }
-        
-        .faq-section h2 {
-            color: var(--accent-light);
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .faq-section h2 i {
-            font-size: 1.4rem;
-        }
-        
-        .faq-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        .faq-item {
-            background: var(--bg2);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: var(--transition);
-            border: 1px solid rgba(125, 75, 255, 0.1);
-        }
-        
-        .faq-item:hover {
-            border-color: var(--accent);
-        }
-        
-        .faq-question {
-            padding: clamp(15px, 3vw, 18px);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--text);
-            font-size: clamp(0.95rem, 3vw, 1rem);
-            min-height: 56px;
-        }
-        
-        .faq-question i {
-            color: var(--accent);
-            transition: transform 0.3s ease;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            padding: 0 clamp(15px, 3vw, 18px);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: var(--text-dark);
-            line-height: 1.6;
-            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 0 clamp(15px, 3vw, 18px) clamp(15px, 3vw, 18px);
-            max-height: 300px;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: clamp(20px, 4vw, 30px) 20px;
-            margin-top: 60px;
-            background: rgba(23, 18, 35, 0.9);
-            border-top: 1px solid rgba(125, 75, 255, 0.2);
-            color: var(--text-dark);
-            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
-            width: 100%;
-        }
-        
-        /* Animations */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .fa-location-dot {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .map-button i.fa-external-link-alt {
-            animation: float 3s infinite ease-in-out;
-        }
-        
-        /* =========================================================
-           RESPONSIVE BREAKPOINTS
-        ========================================================= */
-        
-        /* Large Tablets and Small Laptops (1024px and below) */
-        @media (max-width: 1024px) {
-            .desktop-nav {
-                display: none;
-            }
-            
-            .hamburger-menu {
-                display: flex;
-            }
-            
-            .map-column {
-                flex: 1 1 100%;
-            }
-            
-            .map-info-column {
-                flex: 1 1 100%;
-            }
-            
-            header {
-                padding: 15px 4%;
-            }
-        }
-        
-        /* Tablets (768px and below) */
-        @media (max-width: 768px) {
-            header {
-                padding: 12px 3%;
-            }
-            
-            .logo h1 {
-                font-size: 1.4rem;
-            }
-            
-            .logo img {
-                height: 40px;
-                width: 40px;
-            }
-            
-            .main-content {
-                margin-top: 65px;
-            }
-            
-            .contact-hero {
-                padding: 50px 15px;
-            }
-            
-            .contact-container {
-                padding: 20px 3%;
-            }
-            
-            .map-section, .faq-section {
-                padding: 25px 3%;
-            }
-            
-            .button-row {
-                flex-direction: column;
-            }
-            
-            .map-button, .map-button-alt {
-                width: 100%;
-                min-width: 100%;
-            }
-            
-            .mobile-nav {
-                padding: 80px 15px 30px;
-            }
-            
-            .mobile-nav a {
-                font-size: 1.2rem;
-                padding: 16px 25px;
-                max-width: 280px;
-            }
-        }
-        
-        /* Mobile Devices (480px and below) */
-        @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 1.3rem;
-            }
-            
-            .logo img {
-                height: 36px;
-                width: 36px;
-            }
-            
-            header {
-                padding: 10px 2%;
-            }
-            
-            .hamburger-menu {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-            
-            .main-content {
-                margin-top: 60px;
-            }
-            
-            .contact-hero h1 {
-                font-size: 1.6rem;
-            }
-            
-            .contact-hero p {
-                font-size: 0.95rem;
-            }
-            
-            .form-section, .info-section {
-                padding: 20px 15px;
-            }
-            
-            .contact-card {
-                flex-direction: row;
-                text-align: left;
-            }
-            
-            .mobile-nav a {
-                font-size: 1.1rem;
-                padding: 14px 20px;
-                max-width: 260px;
-            }
-            
-            .mobile-close-btn {
-                top: 15px;
-                right: 15px;
-                font-size: 1.5rem;
-                width: 40px;
-                height: 40px;
-            }
-            
-            .transport-options {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Small Mobile Devices (360px and below) */
-        @media (max-width: 360px) {
-            .logo h1 {
-                font-size: 1.2rem;
-            }
-            
-            .logo img {
-                height: 32px;
-                width: 32px;
-            }
-            
-            .logo {
-                gap: 8px;
-            }
-            
-            header {
-                padding: 8px 2%;
-                min-height: 60px;
-            }
-            
-            .main-content {
-                margin-top: 55px;
-            }
-            
-            .contact-hero {
-                padding: 40px 10px;
-            }
-            
-            .contact-hero h1 {
-                font-size: 1.4rem;
-            }
-            
-            .contact-hero p {
-                font-size: 0.9rem;
-            }
-            
-            .mobile-nav a {
-                font-size: 1rem;
-                padding: 12px 18px;
-                max-width: 240px;
-            }
-            
-            .form-section h2,
-            .info-section h2,
-            .map-section h2,
-            .faq-section h2 {
-                font-size: 1.2rem;
-            }
-            
-            .coordinate-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-            }
-        }
-        
-        /* Ultra-wide screens (1920px and above) */
-        @media (min-width: 1920px) {
-            .contact-container,
-            .map-section,
-            .faq-section {
-                max-width: 1600px;
-            }
-            
-            .desktop-nav {
-                gap: 30px;
-            }
-            
-            .desktop-nav a {
-                font-size: 1.1rem;
-            }
-        }
-        
-        /* Landscape Mode on Mobile */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .mobile-nav {
-                padding: 60px 20px 20px;
-                min-height: auto;
-            }
-            
-            .mobile-nav a {
-                padding: 10px 20px;
-                margin: 5px 0;
-                font-size: 1rem;
-            }
-            
-            .map-column {
-                height: 300px;
-            }
-        }
-        
-        /* High DPI Screens */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .logo img {
-                border-width: 3px;
-            }
-            
-            .map-frame {
-                border-width: 2px;
-            }
-        }
-        
-        /* Reduced motion preference */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .contact-hero::before {
-                animation: none;
-            }
-            
-            .fa-location-dot,
-            .map-button i.fa-external-link-alt {
-                animation: none;
-            }
-        }
-        
-        /* Dark mode preference */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #0a071f;
-            }
-            
-            .card,
-            .form-section,
-            .info-section {
-                background: #251f3a;
-            }
-        }
-        
-        /* Touch-friendly adjustments */
-        @media (hover: none) and (pointer: coarse) {
-            .map-button:hover,
-            .submit-btn:hover,
-            .social-link:hover,
-            .contact-card:hover,
-            .map-button-alt:hover,
-            .desktop-nav a:hover,
-            .mobile-nav a:hover {
-                transform: none;
-            }
-            
-            .map-button:active,
-            .submit-btn:active,
-            .social-link:active,
-            .contact-card:active {
-                transform: scale(0.98);
-            }
-            
-            .desktop-nav a:active {
-                opacity: 0.8;
-            }
-            
-            .mobile-nav a:active {
-                transform: scale(0.98);
-                background: rgba(125, 75, 255, 0.2);
-            }
-            
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                font-size: 16px;
-            }
-            
-            .hamburger-menu,
-            .mobile-close-btn {
-                min-width: 44px;
-                min-height: 44px;
-            }
-        }
-        
-        /* Print styles */
-        @media print {
-            header,
-            .social-links,
-            .submit-btn,
-            .map-button,
-            .map-button-alt,
-            .faq-question i,
-            .hamburger-menu {
-                display: none !important;
-            }
-            
-            body {
-                background: white;
-                color: black;
-            }
-            
-            .main-content {
-                margin-top: 0;
-            }
-            
-            .contact-container,
-            .map-section,
-            .faq-section {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-            
-            .faq-item.active .faq-answer {
-                max-height: none;
-                display: block;
-            }
-            
-            a {
-                color: black;
-                text-decoration: underline;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header with Hamburger Menu -->
-    <header>
+
+<header>
+    <div class="header-container">
         <div class="logo">
-            <img src="photos/logo.jpg" alt="Music Universe Logo">
+            <img src="photos/logo.jpg" alt="Site Logo">
             <h1>Music Universe</h1>
         </div>
         
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav">
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <nav class="nav-menu" id="nav-menu">
             <a href="home.html">Home</a>
             <a href="band.html">Band Members</a>
             <a href="albums.html">Albums</a>
             <a href="tour.html">Tour Dates</a>
             <a href="media.html">Media</a>
-            <a href="contact.html" style="color: var(--accent-light);">Contact</a>
+            <a href="contact.html">Contact</a>
         </nav>
-        
-        <!-- Hamburger Menu Button -->
-        <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle menu">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <!-- Mobile Dropdown - Full Screen Overlay -->
-        <div class="mobile-dropdown" id="mobileDropdown">
-            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu">
-                <i class="fas fa-times"></i>
-            </button>
-            <nav class="mobile-nav">
-                <a href="home.html">
-                    <i class="fas fa-home"></i> Home
-                </a>
-                <a href="band.html">
-                    <i class="fas fa-users"></i> Band Members
-                </a>
-                <a href="albums.html">
-                    <i class="fas fa-compact-disc"></i> Albums
-                </a>
-                <a href="tour.html">
-                    <i class="fas fa-calendar-alt"></i> Tour Dates
-                </a>
-                <a href="media.html">
-                    <i class="fas fa-photo-video"></i> Media
-                </a>
-                <a href="contact.html" style="color: var(--accent-light);">
-                    <i class="fas fa-envelope"></i> Contact
-                </a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Rest of your content remains exactly the same -->
-        <section class="contact-hero">
-            <h1>Get In Touch</h1>
-            <p>Have questions, feedback, or just want to say hello? We'd love to hear from you. Connect with us through any of the channels below.</p>
-        </section>
-
-        <div class="contact-container">
-            <!-- Contact Form -->
-            <section class="form-section">
-                <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject">
-                            <option value="">Select a topic</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="support">Technical Support</option>
-                            <option value="press">Press & Media</option>
-                            <option value="collab">Collaboration</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message *</label>
-                        <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="attachment">Attach File (Optional)</label>
-                        <input type="file" id="attachment" name="attachment">
-                        <small style="color: var(--text-dark); font-size: 0.9rem;">Max file size: 5MB. Allowed: .jpg, .png, .pdf</small>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i> Send Message
-                    </button>
-                </form>
-            </section>
-
-            <!-- Contact Info -->
-            <section class="info-section">
-                <h2><i class="fas fa-info-circle"></i> Contact Information</h2>
-                
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="contact-card-content">
-                            <h3>Our Location</h3>
-                            <p>BLock 14 Music Avenue, Suite<br>Baguio, TN 37203<br>Philippines</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <div class="contact-card-content">
-                            <h3>Email Us</h3>
-                            <p>info@musicuniverse.com<br>support@musicuniverse.com<br>press@musicuniverse.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <i class="fas fa-phone-alt"></i>
-                        <div class="contact-card-content">
-                            <h3>Call Us</h3>
-                            <p>+63 9589 343 5739<br>Mon-Fri: 9AM-6PM EST</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="social-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="https://facebook.com" class="social-link" target="_blank">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://twitter.com" class="social-link" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com" class="social-link" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://youtube.com" class="social-link" target="_blank">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://spotify.com" class="social-link" target="_blank">
-                            <i class="fab fa-spotify"></i>
-                        </a>
-                        <a href="https://tiktok.com" class="social-link" target="_blank">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Map Section -->
-        <section class="map-section">
-            <h2><i class="fas fa-map-marked-alt"></i> Find Our Studio</h2>
-            
-            <div class="map-container-wrapper">
-                <!-- Map Column -->
-                <div class="map-column">
-                    <div class="map-frame">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489198.2173322061!2d120.58991615000001!3d16.3960013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3391a16879def13f%3A0x8edef534be3a75c0!2sBaguio%2C%20Benguet!5e0!3m2!1sen!2sph!4v1742388181447!5m2!1sen!2sph" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Google Maps showing Baguio, Benguet location">
-                        </iframe>
-                    </div>
-                </div>
-                
-                <!-- Info Column -->
-                <div class="map-info-column">
-                    <div class="map-location-header">
-                        <h3><i class="fas fa-location-dot"></i> Baguio, Benguet</h3>
-                        <p>Visit our flagship recording studio in the beautiful mountain city known as the summer capital of the Philippines.</p>
-                    </div>
-                    
-                    <div class="map-info-card map-coordinates-card">
-                        <h4><i class="fas fa-globe-americas"></i> Coordinates</h4>
-                        <div class="coordinate-display">
-                            <div class="coordinate-row">
-                                <i class="fas fa-arrow-up"></i>
-                                <span class="coordinate-value">16.4129692° N</span>
-                                <span class="coordinate-label">Latitude</span>
-                            </div>
-                            <div class="coordinate-row">
-                                <i class="fas fa-arrow-right"></i>
-                                <span class="coordinate-value">120.5913973° E</span>
-                                <span class="coordinate-label">Longitude</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="map-info-card map-about-card">
-                        <h4><i class="fas fa-info-circle"></i> About Baguio</h4>
-                        <p>Known as the <strong style="color: #ff6b8b;">"Summer Capital of the Philippines"</strong>, Baguio is located in the Cordillera Central mountain range of Northern Luzon. The city is famous for its cool climate, pine trees, and vibrant music scene.</p>
-                    </div>
-                    
-                    <div class="map-button-container">
-                        <div class="button-row">
-                            <a href="https://www.google.com/maps/place/Baguio,+Benguet/@16.3960013,120.5899162,13z/data=!3m1!4b1!4m6!3m5!1s0x3391a16879def13f:0x8edef534be3a75c0!8m2!3d16.4129692!4d120.5913973!16zL20vMDE1bDFf?entry=ttu&g_ep=EgoyMDI5MTEzMC4wIKXMDSoASAFQAw%3D%3D" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="map-button">
-                                <i class="fas fa-external-link-alt"></i>
-                                Open in Google Maps
-                            </a>
-                            
-                            <a href="https://maps.apple.com/?q=Baguio+Benguet" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="map-button-alt">
-                                <i class="fab fa-apple"></i>
-                                Apple Maps
-                            </a>
-                        </div>
-                        
-                        <p class="button-note">Opens in a new window • Get directions to our studio</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="getting-here-section">
-                <h4><i class="fas fa-directions"></i> Getting Here</h4>
-                <div class="transport-options">
-                    <div class="transport-option">
-                        <h5><i class="fas fa-car"></i> By Car</h5>
-                        <p>Approximately 4-6 hours from Manila via NLEX, SCTEX, and TPLEX. Ample parking available at our facility.</p>
-                    </div>
-                    <div class="transport-option">
-                        <h5><i class="fas fa-bus"></i> By Bus</h5>
-                        <p>Regular bus services from Manila, Dagupan, and other major cities. Our studio is 15 minutes from the terminal.</p>
-                    </div>
-                    <div class="transport-option">
-                        <h5><i class="fas fa-plane"></i> By Air</h5>
-                        <p>Loakan Airport serves chartered flights (commercial flights currently suspended). We can arrange airport pickup.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How long does it take to get a response?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        We strive to respond to all inquiries within 24-48 hours during business days. Press and media inquiries may take slightly longer.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Can I submit my music for consideration?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Yes! We're always looking for new talent. Please send your music to submissions@musicuniverse.com with a brief bio and links to your work.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Do you offer internships or job opportunities?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        We periodically offer internships and job openings. Check our Careers page or follow us on social media for announcements.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How can I report a technical issue on the website?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Please use the "Technical Support" option in the contact form above or email support@musicuniverse.com with details and screenshots if possible.
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Are you available for interviews or speaking engagements?
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Our team members are occasionally available for interviews and speaking engagements. Please contact press@musicuniverse.com with details about your request.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2025 Music Universe. All rights reserved.</p>
-        </footer>
     </div>
+</header>
 
-    <script>
-        // Improved Hamburger Menu Functionality
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-        const mobileDropdown = document.getElementById('mobileDropdown');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-        const body = document.body;
-        const html = document.documentElement;
+<section class="hero">
+    <div class="hero-content">
+        <h2>Discover Bands • Albums • Tours • Stories</h2>
+        <p>Explore legendary music and new favorites</p>
+    </div>
+</section>
 
-        // Function to toggle mobile menu
-        function toggleMobileMenu() {
-            const isActive = mobileDropdown.classList.toggle('active');
-            const icon = hamburgerBtn.querySelector('i');
-            
-            if (isActive) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-                body.style.overflow = 'hidden';
-                html.style.overflow = 'hidden';
-                hamburgerBtn.setAttribute('aria-expanded', 'true');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-                body.style.overflow = '';
-                html.style.overflow = '';
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-            }
-        }
+<main>
 
-        // Function to close mobile menu
-        function closeMobileMenu() {
-            mobileDropdown.classList.remove('active');
-            const icon = hamburgerBtn.querySelector('i');
+<!-- ROCK SECTION -->
+<section class="genre" id="rock">
+    <h2>Rock Legends</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <a href="beatles.html">
+                <img src="photos/TheBeatles.jpg" alt="The Beatles">
+                <h3>The Beatles</h3>
+                <p>The band that changed music forever.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="nirvana.html">
+                <img src="photos/Nirvana.webp" alt="Nirvana">
+                <h3>Nirvana</h3>
+                <p>Grunge icons led by Kurt Cobain.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="deftones.html">
+                <img src="photos/Deftones.webp" alt="Deftones">
+                <h3>Deftones</h3>
+                <p>Experimental alternative metal band.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="pinkfloyd.html">
+                <img src="photos/PINK.webp" alt="Pink Floyd">
+                <h3>Pink Floyd</h3>
+                <p>Psychedelic rock with cinematic sound.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="queen.html">
+                <img src="photos/QUEEN.jpg" alt="Queen">
+                <h3>Queen</h3>
+                <p>Legendary band led by Freddie Mercury.</p>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- ALT INDIE -->
+<section class="genre" id="alt">
+    <h2>Alternative / Indie</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <a href="radiohead.html">
+                <img src="photos/RADIO.webp" alt="Radiohead">
+                <h3>Radiohead</h3>
+                <p>Atmospheric and experimental sound.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="coldplay.html">
+                <img src="photos/coldplay-profile-2-2504258-2504258-768x508.webp" alt="Coldplay">
+                <h3>Coldplay</h3>
+                <p>Emotional stadium anthems.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="arctic-monkeys.html">
+                <img src="photos/ARTIC MONKEY.jpg" alt="Arctic Monkeys">
+                <h3>Arctic Monkeys</h3>
+                <p>Modern indie-rock icons.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="the-strokes.html">
+                <img src="photos/THESTROKES.webp" alt="The Strokes">
+                <h3>The Strokes</h3>
+                <p>Garage rock revival pioneers.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="smashing-pumpkins.html">
+                <img src="photos/SMASHING.webp" alt="Smashing Pumpkins">
+                <h3>Smashing Pumpkins</h3>
+                <p>Alternative rock with grunge roots.</p>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- POP / LOCAL -->
+<section class="genre" id="pop">
+    <h2>Pop & Local Artists</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <a href="cupofjoe.html">
+                <img src="photos/CUP.jpg" alt="Cup of Joe">
+                <h3>Cup of Joe</h3>
+                <p>Philippine indie pop sensations.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="katseye.html">
+                <img src="photos/KAT.webp" alt="Katseye">
+                <h3>Katseye</h3>
+                <p>International girl group.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="ben&ben.html">
+                <img src="photos/BENBEN.jpg" alt="Ben&Ben">
+                <h3>Ben&Ben</h3>
+                <p>Beloved Filipino folk pop band.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="paramore.html">
+                <img src="photos/PARAMORE.webp" alt="Paramore">
+                <h3>Paramore</h3>
+                <p>Pop-punk icons with emotional lyrics.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="lany.html">
+                <img src="photos/LANY.jpg" alt="LANY">
+                <h3>LANY</h3>
+                <p>Dreamy synth-pop and indie vibes.</p>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- HIP-HOP -->
+<section class="genre" id="hiphop">
+    <h2>Hip-Hop Bands & Groups</h2>
+    <div class="card-container">
+
+        <div class="artist-card">
+            <a href="nwa.html">
+                <img src="photos/nwa.jfif" alt="N.W.A">
+                <h3>N.W.A</h3>
+                <p>West Coast hip-hop pioneers.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="delasoul.html">
+                <img src="photos/dela.jpeg" alt="De La Soul">
+                <h3>De La Soul</h3>
+                <p>Hip-hop with playful lyrics and jazzy beats.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="outkast.html">
+                <img src="photos/out.webp" alt="Outkast">
+                <h3>Outkast</h3>
+                <p>Southern rap blending funk and soul.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="beastie-boys.html">
+                <img src="photos/beast.webp" alt="Beastie Boys">
+                <h3>Beastie Boys</h3>
+                <p>Rap-rock pioneers.</p>
+            </a>
+        </div>
+
+        <div class="artist-card">
+            <a href="run-dmc.html">
+                <img src="photos/dmss.webp" alt="Run-DMC">
+                <h3>Run-DMC</h3>
+                <p>Legendary hip-hop innovators.</p>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<footer id="contact">
+    <div class="footer-content">
+        <h3>Contact</h3>
+        <p>Email: bandfanclub@gmail.com</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">© 2025 Music Universe. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Hamburger menu toggle functionality
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('active');
+        
+        // Change hamburger icon to X when menu is open
+        const icon = this.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
             icon.classList.remove('fa-times');
             icon.classList.add('fa-bars');
-            body.style.overflow = '';
-            html.style.overflow = '';
-            hamburgerBtn.setAttribute('aria-expanded', 'false');
         }
+    });
 
-        // Event listeners for hamburger menu
-        hamburgerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMobileMenu();
-        });
-
-        // Close button
-        mobileCloseBtn.addEventListener('click', closeMobileMenu);
-
-        // Close menu when clicking on a link
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!hamburgerBtn.contains(e.target) && 
-                !mobileDropdown.contains(e.target) && 
-                mobileDropdown.classList.contains('active')) {
-                closeMobileMenu();
+    // Close menu when clicking on a link (for mobile)
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            const navMenu = document.getElementById('nav-menu');
+            const menuToggle = document.getElementById('menu-toggle');
+            const icon = menuToggle.querySelector('i');
+            
+            if (window.innerWidth <= 768) {
+                navMenu.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
+    });
 
-        // Close menu with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileDropdown.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Prevent body scroll when mobile menu is open
-        mobileDropdown.addEventListener('touchmove', function(e) {
-            if (mobileDropdown.classList.contains('active')) {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                
-                // Close all FAQ items
-                document.querySelectorAll('.faq-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // If the clicked item wasn't active, open it
-                if (!isActive) {
-                    faqItem.classList.add('active');
-                }
-            });
-        });
+    // Close menu when clicking outside (for mobile)
+    document.addEventListener('click', function(event) {
+        const navMenu = document.getElementById('nav-menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        const icon = menuToggle.querySelector('i');
         
-        // Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        if (window.innerWidth <= 768 && 
+            !navMenu.contains(event.target) && 
+            !menuToggle.contains(event.target) && 
+            navMenu.classList.contains('active')) {
             
-            // Simple form validation
-            const firstName = document.getElementById('firstName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            
-            if (!firstName || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // In a real implementation, you would send this data to a server
-            // For now, we'll just show a success message
-            alert('Thank you for your message! We\'ll get back to you soon.');
-            this.reset();
-        });
-        
-        // File upload validation
-        const attachmentInput = document.getElementById('attachment');
-        if (attachmentInput) {
-            attachmentInput.addEventListener('change', function(e) {
-                const file = this.files[0];
-                if (!file) return;
-                
-                const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-                const maxSize = 5 * 1024 * 1024; // 5MB
-                
-                if (!validTypes.includes(file.type)) {
-                    alert('Please select a valid file type (JPG, PNG, or PDF).');
-                    this.value = '';
-                    return;
-                }
-                
-                if (file.size > maxSize) {
-                    alert('File size exceeds 5MB limit.');
-                    this.value = '';
-                    return;
-                }
-            });
+            navMenu.classList.remove('active');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
         }
+    });
+</script>
 
-        // Improved touch feedback for mobile devices
-        document.querySelectorAll('.map-button, .submit-btn, .map-button-alt, .mobile-nav a, .social-link').forEach(button => {
-            button.addEventListener('touchstart', function() {
-                this.style.opacity = '0.8';
-            });
-            
-            button.addEventListener('touchend', function() {
-                this.style.opacity = '1';
-            });
-            
-            button.addEventListener('touchcancel', function() {
-                this.style.opacity = '1';
-            });
-        });
-
-        // Improved scroll effect to header
-        let lastScrollTop = 0;
-        const header = document.querySelector('header');
-        let isScrolling = false;
-
-        window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    // Close mobile menu when scrolling
-                    if (mobileDropdown.classList.contains('active') && scrollTop > 50) {
-                        closeMobileMenu();
-                    }
-                    
-                    if (scrollTop > lastScrollTop && scrollTop > 100) {
-                        // Scrolling down
-                        header.style.transform = 'translateY(-100%)';
-                    } else {
-                        // Scrolling up
-                        header.style.transform = 'translateY(0)';
-                    }
-                    
-                    // Add shadow when scrolled
-                    if (scrollTop > 50) {
-                        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-                    } else {
-                        header.style.boxShadow = 'none';
-                    }
-                    
-                    lastScrollTop = scrollTop;
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-        });
-
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                // Close mobile menu on resize if it's open
-                if (window.innerWidth > 1024 && mobileDropdown.classList.contains('active')) {
-                    closeMobileMenu();
-                }
-            }, 250);
-        });
-
-        // Improve form input on mobile
-        document.querySelectorAll('input, textarea, select').forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.fontSize = '16px'; // Prevents zoom on iOS
-            });
-            
-            input.addEventListener('blur', function() {
-                this.style.fontSize = '';
-            });
-        });
-
-        // Prevent zoom on double tap for iOS
-        document.addEventListener('dblclick', function(e) {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') {
-                e.preventDefault();
-            }
-        }, { passive: false });
-
-        // Initialize accessibility attributes
-        hamburgerBtn.setAttribute('aria-expanded', 'false');
-        hamburgerBtn.setAttribute('aria-controls', 'mobileDropdown');
-        mobileDropdown.setAttribute('aria-hidden', 'true');
-
-        // Update accessibility attributes when menu opens/closes
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === 'class') {
-                    const isActive = mobileDropdown.classList.contains('active');
-                    mobileDropdown.setAttribute('aria-hidden', !isActive);
-                }
-            });
-        });
-
-        observer.observe(mobileDropdown, { attributes: true });
-    </script>
 </body>
 </html>
